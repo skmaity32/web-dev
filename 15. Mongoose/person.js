@@ -17,11 +17,14 @@ personSchema.virtual('fullName').get(function () {
     return `${this.first} ${this.last}`
 })
 
+// middleware/pre hook to execute some code just before saving
 personSchema.pre('save', async function () {
     this.first = 'YO';
     this.last = 'MAMA';
     console.log("ABOUT TO SAVE!!!!")
 })
+
+// middleware/post hook to execute some code just after saving
 personSchema.post('save', async function () {
     console.log("JUST SAVED!!!!")
 })
